@@ -1,0 +1,11 @@
+services:
+  weather-gateway:
+      build: .
+      container_name: weather-gateway
+      ports:
+        - "8001:8000"
+      healthcheck:
+        test: ["CMD-SHELL", "curl -f http://localhost:8000/health || exit 1"]
+        interval: 5s
+        timeout: 5s
+        retries: 5
